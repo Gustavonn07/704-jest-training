@@ -2,7 +2,7 @@ beforeEach(() => {
   cy.visit('http://localhost:5173/');
 });
 
-describe('cypress adicionar e editar', () => {
+describe('cypress adicionar, editar e pesquisar', () => {
 
   afterEach(() => {
     cy.get('.todo[data-testid="1"]').then(($todo) => {
@@ -48,7 +48,27 @@ describe('cypress adicionar e editar', () => {
     cy.get('.todo[data-testid="1"]').should('exist')
       .should('have.text', tarefaEditada);
   });
-})
+
+  
+  it('pesquisar todo', () => {
+    
+    // Criar:
+    const tarefa = 'PatosLegais';
+
+    cy.get('[data-testid="input-add"]').type(tarefa);
+
+    cy.get('[data-testid="add-tarefa"]').click();
+
+    cy.get('.todo[data-testid="1"]').should('exist')
+      .should('have.text', tarefa);
+
+    // Pesquisar tarefa:
+    cy.get('[data-testid="pesquisar-tarefa"]').should('exist')
+      .type(tarefa)
+
+      cy.get('.todo[data-testid="1"]').should('exist')
+  })
+});
 
 describe('deletar todo', () => {
 
@@ -69,4 +89,4 @@ describe('deletar todo', () => {
 
     cy.get('.todo[data-testid="1"]').should('not.exist');
   })
-})
+});

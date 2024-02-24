@@ -86,7 +86,7 @@ const Todos = (): JSX.Element => {
       <h1 className="text-4xl text-gray-200 mb-16">Minhas tarefas</h1>
 
       <div className="absolute top-20 flex gap-10 w-full justify-center items-center">
-        <input id="searchbar" type="text" className="w-1/4 h-10 rounded-sm px-3 shadow" placeholder="Pesquise sua tarefa" onChange={e => setSearchTerm(e.target.value)} />
+        <input data-testid="pesquisar-tarefa" id="searchbar" type="text" className="w-1/4 h-10 rounded-sm px-3 shadow" placeholder="Pesquise sua tarefa" onChange={e => setSearchTerm(e.target.value)} />
       </div>
 
       <div className="w-72 flex justify-center items-center flex-col">
